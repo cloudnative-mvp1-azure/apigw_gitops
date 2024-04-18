@@ -5,4 +5,4 @@ resources:
 - service.yaml
 images:
 - name: myharbor.apps.211-34-231-93.nip.io/mvp/mvp_apigw
-  newTag: "20240418005505"
+  newTag: "20240418074827"
