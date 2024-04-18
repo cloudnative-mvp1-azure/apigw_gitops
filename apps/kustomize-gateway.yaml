@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mvp-apigw # 본인 Namespace로 변경. <namespace>-kustomize-backend
+  namespace: argocd  # 절대 수정 하지 말것
+  # Add a this finalizer ONLY if you want these to cascade delete.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: mvp_apigw # argocd 프로젝트 이름
+  
+  source:
+    repoURL: https://github.com/cloudnative-mvp1/mvp_apigw_gitops.git # 본인의 git으로 변경
+    targetRevision: HEAD
+    path: charts/gateway # charts 폴더안에 backend 확인
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mvp # 본인의 namespace
+  
+  syncPolicy:
+    automated: 
+      prune: true 
+      selfHeal: true   
+    # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.  
+    syncOptions:
+      - CreateNamespace=false   
