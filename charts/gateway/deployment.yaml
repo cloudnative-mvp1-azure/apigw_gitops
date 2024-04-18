@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway
+  name: apigw
 spec:
   replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: api-gateway
+      app: apigw
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: apigw
     spec:
       containers:
-      - name: api-gateway
+      - name: apigw
         image: myharbor.apps.211-34-231-93.nip.io/mvp/mvp_apigw
         imagePullPolicy: Always
         ports:
