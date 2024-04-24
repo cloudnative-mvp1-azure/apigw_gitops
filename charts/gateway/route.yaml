@@ -3,9 +3,9 @@ kind: Route
 metadata:
   labels:
     app : apigw
-  name: apigw
+  name: apigw-route
 spec:
-  host: apigw.apps.211-34-231-93.nip.io
+  host: mvp-ingressgateway.apps.211-34-231-93.nip.io
   port:
     targetPort: http
   tls:
